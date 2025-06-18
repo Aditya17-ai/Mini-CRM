@@ -6,6 +6,7 @@ import authRoutes from './auth.js';
 import jobRoutes from './jobs.js';
 import usersRoutes from './users.js';
 import aboutusRoutes from './aboutus.js';
+import analyticsRoutes from './analytics.js';
 import connectDb from './db.js';
 import { Server } from 'socket.io';
 
@@ -23,6 +24,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/jobs', jobRoutes);
 app.use('/api/users', usersRoutes);
 app.use('/api/aboutus', aboutusRoutes);
+app.use('/api/analytics', analyticsRoutes);
 
 // Test route
 app.get('/', (req, res) => res.send('API Running'));

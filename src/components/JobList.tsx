@@ -207,20 +207,22 @@ const JobList: React.FC<JobListProps> = ({ token, isAdmin }) => {
   return (
     <Box mt={4}>
       {isAdmin ? (
-        <Button
-          variant={allJobs ? 'contained' : 'outlined'}
-          onClick={() => setAllJobs((v) => !v)}
-          sx={{ mb: 2 }}
-        >
-          {allJobs ? 'Show My Jobs' : 'Show All Jobs'}
-        </Button>
+        <Box mb={3}>
+          <Button
+            variant={allJobs ? 'contained' : 'outlined'}
+            onClick={() => setAllJobs((v) => !v)}
+            sx={{ mr: 2, minWidth: 140, fontWeight: 600 }}
+          >
+            {allJobs ? 'Show My Jobs' : 'Show All Jobs'}
+          </Button>
+        </Box>
       ) : (
-        <Typography variant="h6" sx={{ mb: 2 }}>
+        <Typography variant="h6" sx={{ mb: 3, fontWeight: 600 }}>
           My Applications
         </Typography>
       )}
-      <Stack direction="row" spacing={2} mb={2} alignItems="center">
-        <FormControl size="small">
+      <Stack direction="row" spacing={2} mb={3} alignItems="center" flexWrap="wrap">
+        <FormControl size="small" sx={{ minWidth: 140 }}>
           <InputLabel>Status</InputLabel>
           <Select value={status} label="Status" onChange={e => setStatus(e.target.value)}>
             <MenuItem value="">All</MenuItem>
@@ -229,11 +231,11 @@ const JobList: React.FC<JobListProps> = ({ token, isAdmin }) => {
             ))}
           </Select>
         </FormControl>
-        <Button variant={sort === 'asc' ? 'contained' : 'outlined'} onClick={() => setSort('asc')}>Sort Asc</Button>
-        <Button variant={sort === 'desc' ? 'contained' : 'outlined'} onClick={() => setSort('desc')}>Sort Desc</Button>
-        <Button variant="contained" color="primary" onClick={handleAddOpen}>Add Job</Button>
+        <Button variant={sort === 'asc' ? 'contained' : 'outlined'} onClick={() => setSort('asc')} sx={{ minWidth: 120, fontWeight: 600 }}>Sort Asc</Button>
+        <Button variant={sort === 'desc' ? 'contained' : 'outlined'} onClick={() => setSort('desc')} sx={{ minWidth: 120, fontWeight: 600 }}>Sort Desc</Button>
+        <Button variant="contained" color="primary" onClick={handleAddOpen} sx={{ minWidth: 120, fontWeight: 600 }}>Add Job</Button>
       </Stack>
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} sx={{ borderRadius: 3, boxShadow: 3 }}>
         <Table size="small" aria-label="job table">
           <TableHead>
             <TableRow>

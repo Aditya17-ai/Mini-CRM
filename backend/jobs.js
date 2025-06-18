@@ -91,7 +91,8 @@ router.get('/all', authMiddleware, async (req, res) => {
   // Check if user is admin
   const user = await User.findById(req.user.id);
   if (!user || !user.is_admin) return res.status(403).json({ error: 'Forbidden' });
-  const jobs = await Job.find({}).sort({ applied_date: -1 });
+  const { sort } = req.query;
+  const jobs = await Job.find({}).sort({ applied_date: sort === 'asc' ? 1 : -1 });
   res.json(jobs);
 });
 

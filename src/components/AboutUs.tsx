@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Typography, TextField, Button, Alert, Paper } from '@mui/material';
+import { Typography, TextField, Button, Alert, Paper, Box } from '@mui/material';
 
 const AboutUs: React.FC<{ onSubmitSuccess?: () => void }> = ({ onSubmitSuccess }) => {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
@@ -43,49 +43,52 @@ const AboutUs: React.FC<{ onSubmitSuccess?: () => void }> = ({ onSubmitSuccess }
   };
 
   return (
-    <Paper sx={{ p: 4, maxWidth: 500, mx: 'auto', mt: 6 }}>
-      <Typography variant="h4" align="center" gutterBottom>About Us</Typography>
-      <Typography align="center" sx={{ mb: 2 }}>
-        Have a question or want to introduce yourself? Fill out the form below and the admin will be notified in real time!
-      </Typography>
-      <form onSubmit={handleSubmit}>
-        <TextField
-          label="Name"
-          name="name"
-          value={form.name}
-          onChange={handleChange}
-          fullWidth
-          margin="normal"
-          required
-        />
-        <TextField
-          label="Email"
-          name="email"
-          type="email"
-          value={form.email}
-          onChange={handleChange}
-          fullWidth
-          margin="normal"
-          required
-        />
-        <TextField
-          label="Message"
-          name="message"
-          value={form.message}
-          onChange={handleChange}
-          fullWidth
-          margin="normal"
-          multiline
-          minRows={3}
-          required
-        />
-        {error && <Alert severity="error" sx={{ mt: 2 }}>{error}</Alert>}
-        {success && <Alert severity="success" sx={{ mt: 2 }}>{success}</Alert>}
-        <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 3 }} disabled={loading}>
-          {loading ? 'Sending...' : 'Send'}
-        </Button>
-      </form>
-    </Paper>
+    <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <Box sx={{ flex: 1 }} />
+      <Paper sx={{ p: 4, maxWidth: 500, mx: 'auto', mb: 4 }}>
+        <Typography variant="h4" align="center" gutterBottom>About Us</Typography>
+        <Typography align="center" sx={{ mb: 2 }}>
+          Have a question or want to introduce yourself? Fill out the form below and the admin will be notified in real time!
+        </Typography>
+        <form onSubmit={handleSubmit}>
+          <TextField
+            label="Name"
+            name="name"
+            value={form.name}
+            onChange={handleChange}
+            fullWidth
+            margin="normal"
+            required
+          />
+          <TextField
+            label="Email"
+            name="email"
+            type="email"
+            value={form.email}
+            onChange={handleChange}
+            fullWidth
+            margin="normal"
+            required
+          />
+          <TextField
+            label="Message"
+            name="message"
+            value={form.message}
+            onChange={handleChange}
+            fullWidth
+            margin="normal"
+            multiline
+            minRows={3}
+            required
+          />
+          {error && <Alert severity="error" sx={{ mt: 2 }}>{error}</Alert>}
+          {success && <Alert severity="success" sx={{ mt: 2 }}>{success}</Alert>}
+          <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 3 }} disabled={loading}>
+            {loading ? 'Sending...' : 'Send'}
+          </Button>
+        </form>
+      </Paper>
+    </Box>
   );
 };
 
