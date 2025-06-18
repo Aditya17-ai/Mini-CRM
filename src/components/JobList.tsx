@@ -24,6 +24,8 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
+const API_BASE = import.meta.env.VITE_API_URL || '';
+
 const statusOptions = ['Applied', 'Interview', 'Offer', 'Rejected', 'Accepted'];
 
 interface Job {
@@ -70,7 +72,7 @@ const JobList: React.FC<JobListProps> = ({ token, isAdmin }) => {
 
   useEffect(() => {
     const fetchJobs = async () => {
-      let url = allJobs && isAdmin ? `/api/jobs/all?sort=${sort}` : `/api/jobs?sort=${sort}`;
+      let url = allJobs && isAdmin ? `${API_BASE}/api/jobs/all?sort=${sort}` : `${API_BASE}/api/jobs?sort=${sort}`;
       if (status) url += `&status=${status}`;
       const res = await fetch(url, {
         headers: { Authorization: `Bearer ${token}` },
@@ -126,7 +128,7 @@ const JobList: React.FC<JobListProps> = ({ token, isAdmin }) => {
       return;
     }
     try {
-      const res = await fetch('/api/jobs', {
+      const res = await fetch(`${API_BASE}/api/jobs`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -165,7 +167,7 @@ const JobList: React.FC<JobListProps> = ({ token, isAdmin }) => {
       return;
     }
     try {
-      const res = await fetch(`/api/jobs/${editForm._id}`, {
+      const res = await fetch(`${API_BASE}/api/jobs/${editForm._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -190,7 +192,7 @@ const JobList: React.FC<JobListProps> = ({ token, isAdmin }) => {
   const handleDelete = async (_id: string) => {
     setDeletingId(_id);
     try {
-      const res = await fetch(`/api/jobs/${_id}`, {
+      const res = await fetch(`${API_BASE}/api/jobs/${_id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
       });

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Typography, TextField, Button, Alert, Paper, Box } from '@mui/material';
 
+const API_BASE = import.meta.env.VITE_API_URL || '';
+
 const AboutUs: React.FC<{ onSubmitSuccess?: () => void }> = ({ onSubmitSuccess }) => {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [error, setError] = useState('');
@@ -21,7 +23,7 @@ const AboutUs: React.FC<{ onSubmitSuccess?: () => void }> = ({ onSubmitSuccess }
     }
     setLoading(true);
     try {
-      const res = await fetch('/api/aboutus', {
+      const res = await fetch(`${API_BASE}/api/aboutus`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),

@@ -27,10 +27,12 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onShowUsers, onShowJobs
   const [loading, setLoading] = useState(false);
   const [showAnalytics, setShowAnalytics] = useState(false);
 
+  const API_BASE = import.meta.env.VITE_API_URL || '';
+
   useEffect(() => {
     if (showAnalytics) {
       setLoading(true);
-      fetch('/api/analytics/jobs-status-count')
+      fetch(`${API_BASE}/api/analytics/jobs-status-count`)
         .then(res => res.json())
         .then(data => {
           setStatusData(data);
@@ -38,7 +40,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onShowUsers, onShowJobs
         })
         .catch(() => setLoading(false));
     }
-  }, [showAnalytics]);
+  }, [showAnalytics, API_BASE]);
 
   const chartData = {
     labels: statusData.map(s => s._id),

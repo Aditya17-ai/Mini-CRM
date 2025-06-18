@@ -13,6 +13,8 @@ interface UserListProps {
   token: string;
 }
 
+const API_BASE = import.meta.env.VITE_API_URL || '';
+
 const UserList: React.FC<UserListProps> = ({ token }) => {
   const [users, setUsers] = useState<User[]>([]);
   const [error, setError] = useState('');
@@ -26,7 +28,7 @@ const UserList: React.FC<UserListProps> = ({ token }) => {
     const fetchUsers = async () => {
       console.log('UserList token:', token); // Debug log
       try {
-        const res = await fetch('/api/users', {
+        const res = await fetch(`${API_BASE}/api/users`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (!res.ok) {
@@ -61,7 +63,7 @@ const UserList: React.FC<UserListProps> = ({ token }) => {
   const handleEditSave = async () => {
     if (!editUser) return;
     try {
-      const res = await fetch(`/api/users/${editUser._id}`, {
+      const res = await fetch(`${API_BASE}/api/users/${editUser._id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -85,7 +87,7 @@ const UserList: React.FC<UserListProps> = ({ token }) => {
   const handleDelete = async () => {
     if (!deleteUser) return;
     try {
-      const res = await fetch(`/api/users/${deleteUser._id}`, {
+      const res = await fetch(`${API_BASE}/api/users/${deleteUser._id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
       });
