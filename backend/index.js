@@ -14,7 +14,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 const allowedOrigins = [
-  'https://mini-crm-1-wolp.onrender.com', // replace with your actual frontend Render URL
+  'mini-crm-tau.vercel.app', // replace with your actual frontend Render URL
   'http://localhost:5173'
 ];
 
