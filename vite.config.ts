@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api': 'https://mini-crm-bu0j.onrender.com'
+      '/api': 'https://mini-crm-bu0j.onrender.com' // Use Render backend for /api
     }
   },
 })
