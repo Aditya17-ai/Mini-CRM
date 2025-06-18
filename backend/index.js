@@ -11,7 +11,7 @@ import connectDb from './db.js';
 import { Server } from 'socket.io';
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 10000;
 
 const allowedOrigins = [
   'mini-crm-tau.vercel.app', // replace with your actual frontend Render URL
