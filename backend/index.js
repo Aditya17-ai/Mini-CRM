@@ -13,7 +13,15 @@ import { Server } from 'socket.io';
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+const allowedOrigins = [
+  'https://mini-crm-1-wolp.onrender.com', // replace with your actual frontend Render URL
+  'http://localhost:5173'
+];
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true
+}));
 app.use(express.json());
 
 // Connect to MongoDB
