@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 5000;
 
 const allowedOrigins = [
   'mini-crm-tau.vercel.app', // replace with your actual frontend Render URL
-  'http://localhost:5173'
+  'https://mini-crm-bu0j.onrender.com'
 ];
 
 app.use(cors({
