@@ -6,11 +6,9 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-<<<<<<< HEAD
-      '/api': 'http://localhost:10000' // Use local backend for /api
-=======
-      '/api': 'https://mini-crm-iq49.onrender.com' // Use Render backend for /api
->>>>>>> c78d50ad0cebdcf52d2faa90bb169ec5abf965a0
+      // Change the target below depending on your environment (local or production)
+      // '/api': 'http://localhost:10000', // Use this for local development
+      '/api': 'https://mini-crm-xss1.onrender.com' // Uncommented for production
     }
   },
 })
