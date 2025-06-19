@@ -7,6 +7,7 @@ interface AuthFormProps {
 
 const backgroundUrl = 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80'; // Modern background
 const logoUrl = 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'; // Example logo
+const API_BASE = import.meta.env.VITE_API_URL || '';
 
 const AuthForm: React.FC<AuthFormProps> = ({ onAuth }) => {
   const [isLogin, setIsLogin] = useState(true);
@@ -18,7 +19,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ onAuth }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
-    const endpoint = isLogin ? '/api/auth/login' : '/api/auth/signup';
+    const endpoint = isLogin ? `${API_BASE}/api/auth/login` : `${API_BASE}/api/auth/signup`;
     try {
       const res = await fetch(endpoint, {
         method: 'POST',
