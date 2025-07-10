@@ -8,7 +8,7 @@ export default defineConfig({
     proxy: {
       // Change the target below depending on your environment (local or production)
       // '/api': 'http://localhost:10000', // Use this for local development
-      '/api': 'https://mini-crm-xss1.onrender.com' // Uncommented for production
+      '/api': 'https://mini-crm-xss1.onrender.com/' // Uncommented for production
     }
   },
 })
